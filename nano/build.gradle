@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion = androidBuildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.androidx.constraintlayout
+    api rootProject.ext.deps.kotlin
+    api rootProject.ext.deps.coroutinesCore
+    api rootProject.ext.deps.coroutinesAndroid
+
+    api rootProject.ext.androidx.appcompat
+    api rootProject.ext.androidx.coreKtx
+
+    api rootProject.ext.jetpack.lifecycle_extensions
+    api rootProject.ext.jetpack.viewmodel_ktx
+
+    api rootProject.ext.koin.viewmodel
+    api rootProject.ext.koin.ext
+
+    api rootProject.ext.utils.timber
+
+    api rootProject.ext.net.retrofit
+    api rootProject.ext.net.gsonConverter
+    implementation(rootProject.ext.net.logInterceptor) {
+        exclude group: 'org.json', module: 'json'
+    }
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.palette:palette:1.0.0'
+}

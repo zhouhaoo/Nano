@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unknown_error">未知错误，请稍后重试</string>
+    <string name="net_error">网络不可用，请检查网络</string>
+    <string name="net_unknown_host">Ip解析错误，请稍后重试</string>
+    <string name="time_out_error">网络连接超时，请稍后重试</string>
+    <string name="parse_error">数据解析错误，请稍后重试</string>
+    <string name="error_500">服务器不稳定，请稍后重试</string>
+    <string name="error_404">请求地址不存在</string>
+    <string name="error_403">请求被服务器拒绝</string>
+    <string name="error_307">请求被重定向到其他页面</string>
+    <string name="error_other">未知请求错误，请稍后重试</string>
+</resources>

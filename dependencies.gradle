@@ -1,0 +1,96 @@
+ext {
+    //Android
+    kotlinVersion = '1.3.50'
+    gradleVersion = '3.5.1'
+    androidBuildToolsVersion = "28.0.3"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    //Libraries
+    appcompat = '1.1.0'
+    constraintlayout = '1.1.3'
+    koin_version = '2.0.1'
+    coroutines_version = '1.3.2'
+    lifecycle_version = '2.1.0'
+    room_version = '2.2.0'
+    retrofit_version = '2.6.2'
+    mmkv_version = '1.0.22'
+    timber_version = '4.7.1'
+    cardview_version = "1.0.0"
+    material_dialogs = "3.1.1"
+    adapter = "2.9.45-androidx"
+    leakcanary = "2.0-beta-3"
+    bulid = [
+            kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}",
+            gradle: "com.android.tools.build:gradle:${gradleVersion}"
+    ]
+    // 构建
+    deps = [
+            kotlin           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}",
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutines_version}"
+    ]
+    jetpack = [
+            lifecycle_extensions: "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+            viewmodel_ktx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+
+            room_runtime        : "androidx.room:room-runtime:$room_version",
+            room_compiler       : "androidx.room:room-compiler:$room_version",
+            room_ktx            : "androidx.room:room-ktx:$room_version"
+
+    ]
+    androidx = [
+            appcompat       : "androidx.appcompat:appcompat:${appcompat}",
+            coreKtx         : "androidx.core:core-ktx:${appcompat}",
+            fragmentKtx     : "androidx.fragment:fragment-ktx:${appcompat}",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:${constraintlayout}",
+            cardview        : "androidx.cardview:cardview:$cardview_version"
+    ]
+    koin = [
+            scope    : "org.koin:koin-androidx-scope:${koin_version}",
+            viewmodel: "org.koin:koin-androidx-viewmodel:${koin_version}",
+            ext      : "org.koin:koin-androidx-ext:${koin_version}",
+            test     : "org.koin:koin-test:${koin_version}"
+    ]
+    //网络
+    net = [
+            retrofit      : "com.squareup.retrofit2:retrofit:${retrofit_version}",
+            gsonConverter : "com.squareup.retrofit2:converter-gson:${retrofit_version}",
+            logInterceptor: "com.github.ihsanbal:LoggingInterceptor:3.0.0"
+    ]
+    //存储
+    store = [
+            mmkv         : "com.tencent:mmkv:${mmkv_version}",
+            room_runtime : "androidx.room:room-runtime:$room_version",
+            room_compiler: "androidx.room:room-compiler:$room_version",// For Kotlin use kapt instead of annotationProcessor
+            // optional - Kotlin Extensions and Coroutines support for Room
+            room_ktx     : "androidx.room:room-ktx:$room_version"
+
+    ]
+    ui = [
+            design             : "com.google.android.material:material:1.0.0",
+            statusBarCompat    : "com.github.niorgai:StatusBarCompat:2.3.3",
+            toast              : 'com.hjq:toast:8.0',
+            dialogsCore        : "com.afollestad.material-dialogs:core:${material_dialogs}",
+            dialogsInput       : "com.afollestad.material-dialogs:input:${material_dialogs}",
+            dialogsDatetTime   : "com.afollestad.material-dialogs:datetime:${material_dialogs}",
+            dialogsBottomsheets: "com.afollestad.material-dialogs:bottomsheets:${material_dialogs}",
+            adapterHelper      : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapter}"
+    ]
+
+    third = [
+            pgyer: "com.pgyersdk:sdk:3.0.5"
+
+    ]
+    utils = [
+            timber: "com.jakewharton.timber:timber:${timber_version}",
+            anko  : "org.jetbrains.anko:anko-commons:0.10.8"
+    ]
+    debug = [
+            leakcanary: "com.squareup.leakcanary:leakcanary-android:${leakcanary}"
+    ]
+    test = [
+
+    ]
+}
