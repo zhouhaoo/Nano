@@ -44,6 +44,7 @@ open class BaseViewModel : ViewModel() {
                     state.postValue(loadingState)
                     tryBlock()
                 } catch (t: Throwable) {
+
                     if (controlException && t is ApiException) {
                         catchBlock(t)
                     } else {
