@@ -12,8 +12,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 
 
 /**
@@ -44,7 +44,7 @@ open class BaseViewModel : ViewModel() {
                     state.postValue(loadingState)
                     tryBlock()
                 } catch (t: Throwable) {
-
+                    Timber.e(t)
                     if (controlException && t is ApiException) {
                         catchBlock(t)
                     } else {

@@ -20,10 +20,10 @@ suspend inline fun <reified T> withIOContext(
     crossinline block: suspend CoroutineScope.() -> BaseResponse<T>
 ): T = withContext(Dispatchers.IO) {
     val response = block()
-    if (!response.error){
+    if (!response.error) {
         Timber.e("response.results")
         response.results ?: T::class.java.newInstance()
-    } else{
+    } else {
         Timber.e("response.        throw  ApiException(response.message)")
         throw  ApiException(response.message)
     }
@@ -44,6 +44,7 @@ fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
                     }
                 }
                 is CompleteState -> this.dismissLoading()
+                is HintState -> toast(resId = it.messageInfo)
             }
         })
     }

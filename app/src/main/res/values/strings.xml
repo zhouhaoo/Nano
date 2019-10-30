@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nano</string>
+    <string name="success">获取成功</string>
 </resources>

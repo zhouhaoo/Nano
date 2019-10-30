@@ -1,18 +1,15 @@
 package com.zhouhaoh.nano.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.ihsanbal.logging.Level
-import com.ihsanbal.logging.LoggingInterceptor
-import com.zhouhaoh.nano.module.NanoConfig
+import com.zhouhaoh.nano.module.NanoCore
 import com.zhouhaoh.nano.ui.CommonUIStrategy
 import com.zhouhaoh.nano.ui.DefaultUIStrategy
 import okhttp3.OkHttpClient
-import okhttp3.internal.platform.Platform
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 /**
  * ### Retrofit Remote Web Service dataSource
@@ -21,27 +18,15 @@ import java.util.concurrent.TimeUnit
  */
 val nanoModule = module {
     single { createGson() }
-//    factory <CommonUIStrategy> { DefaultUIStrategy() }
+    factory<CommonUIStrategy> { (context: Context) -> DefaultUIStrategy(context) }
     single(createdAtStart = true) { createOkHttpClient(get()) }
 }
 
-fun createOkHttpClient(nano: NanoConfig): OkHttpClient {
-    val builder = OkHttpClient.Builder()
-    val httpLoggingInterceptor = LoggingInterceptor.Builder()
-    httpLoggingInterceptor.apply {
-        loggable(nano.DEBUG)
-        setLevel(Level.BODY)
-        log(Platform.INFO)
-        request("Request")
-        response("Response")
-    }
-
-    nano.okHttpOption(builder)
-    return builder
-        .connectTimeout(60L, TimeUnit.SECONDS)
-        .readTimeout(60L, TimeUnit.SECONDS)
-        .addInterceptor(httpLoggingInterceptor.build())
-        .build()
+/**
+ * Retrofit Remote
+ */
+fun createOkHttpClient(nanoCore: NanoCore): OkHttpClient {
+    return OkHttpClient.Builder().apply(nanoCore.okHttpOption).build()
 }
 
 /**
@@ -50,14 +35,12 @@ fun createOkHttpClient(nano: NanoConfig): OkHttpClient {
 inline fun <reified T> createWebService(
     okHttpClient: OkHttpClient,
     gson: Gson,
-    nano: NanoConfig
+    nanoCore: NanoCore
 ): T {
-    val builder = Retrofit.Builder()
-    nano.retrofitOption(builder)
-    val retrofit = builder
-        .baseUrl(nano.BASE_URL)
+    val retrofit = Retrofit.Builder()
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
+        .apply(nanoCore.retrofitOption)
         .build()
     return retrofit.create(T::class.java)
 }

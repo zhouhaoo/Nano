@@ -2,14 +2,17 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.novoda.bintray-release'
+
+def nanoVersion = "0.1.1"
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
     buildToolsVersion = androidBuildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName nanoVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -29,31 +32,46 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.androidx.constraintlayout
-    api rootProject.ext.deps.kotlin
-    api rootProject.ext.deps.coroutinesCore
-    api rootProject.ext.deps.coroutinesAndroid
+    def config = rootProject.ext
+    api config.androidx.constraintlayout
+    api config.androidx.constraintlayout
+    api config.androidx.cardview
+    api config.androidx.fragmentKtx
+    api config.ui.dialogsCore
+    api config.ui.design
 
-    api rootProject.ext.androidx.appcompat
-    api rootProject.ext.androidx.coreKtx
+    api config.deps.kotlin
+    api config.deps.coroutinesCore
+    api config.deps.coroutinesAndroid
 
-    api rootProject.ext.jetpack.lifecycle_extensions
-    api rootProject.ext.jetpack.viewmodel_ktx
+    api config.androidx.appcompat
+    api config.androidx.coreKtx
 
-    api rootProject.ext.koin.viewmodel
-    api rootProject.ext.koin.ext
+    api config.jetpack.lifecycle_extensions
+    api config.jetpack.viewmodel_ktx
 
-    api rootProject.ext.utils.timber
+    api config.koin.viewmodel
+    api config.koin.ext
 
-    api rootProject.ext.net.retrofit
-    api rootProject.ext.net.gsonConverter
-    implementation(rootProject.ext.net.logInterceptor) {
-        exclude group: 'org.json', module: 'json'
-    }
+    api config.utils.timber
+
+    api config.net.retrofit
+    api config.net.gsonConverter
+
+    api 'androidx.palette:palette:1.0.0'
 
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'androidx.palette:palette:1.0.0'
+}
+
+publish {
+    userOrg = 'zhouhaoo'
+    repoName = 'android'
+    groupId = 'com.zhouhaoh'
+    artifactId = 'nano'
+    publishVersion = nanoVersion
+    desc = 'mvvm kotlin '
+    website = 'https://github.com/zhouhaoo/Nano'
 }

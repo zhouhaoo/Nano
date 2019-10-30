@@ -1,6 +1,7 @@
 package com.zhouhaoh.nano.sample
 
 import android.app.Application
+import com.hjq.toast.ToastUtils
 import com.zhouhaoh.nano.di.nanoModule
 import com.zhouhaoh.nano.sample.di.appModule
 import com.zhouhaoh.nano.sample.di.dataModule
@@ -8,6 +9,7 @@ import com.zhouhaoh.nano.sample.di.viewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import timber.log.Timber
 
 
 /**

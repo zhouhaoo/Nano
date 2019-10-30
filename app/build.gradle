@@ -30,12 +30,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':nano')
     def config = rootProject.ext
-    implementation config.androidx.constraintlayout
-    implementation config.androidx.cardview
-    implementation config.androidx.fragmentKtx
-    implementation config.ui.design
     implementation config.ui.toast
-    implementation config.ui.dialogsCore
+    implementation(config.net.logInterceptor) {
+        exclude group: 'org.json', module: 'json'
+    }
     debugImplementation config.debug.leakcanary
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
