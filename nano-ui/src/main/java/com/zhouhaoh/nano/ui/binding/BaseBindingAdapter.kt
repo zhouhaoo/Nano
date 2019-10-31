@@ -1,4 +1,4 @@
-package com.zhouhaoa.nano.ui.binding
+package com.zhouhaoh.nano.ui.binding
 
 import android.view.LayoutInflater
 import android.view.View.GONE
@@ -20,6 +20,7 @@ import com.zhouhaoh.nano.ui.databinding.AbsFooterLoadMoreBinding
  * 利用类型别名定义空的lambda表达式
  */
 typealias ItemListener = () -> Unit
+
 /**
  *
  * baseadpater
@@ -102,7 +103,8 @@ abstract class BaseBindingAdapter<T, B : ViewDataBinding>(
 
     fun createFooterViewHolder(parent: ViewGroup): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<B>(layoutInflater, R.layout.abs_footer_load_more, parent, false)
+        val binding =
+            DataBindingUtil.inflate<B>(layoutInflater, R.layout.abs_footer_load_more, parent, false)
         return ViewHolderFooter(binding)
     }
 
@@ -212,7 +214,8 @@ abstract class BaseBindingAdapter<T, B : ViewDataBinding>(
 
 
     // 声明函数变量
-    val imageClick: (adapter: BaseBindingAdapter<T, B>) -> Unit = { adapter -> viewClicked(adapter) }
+    val imageClick: (adapter: BaseBindingAdapter<T, B>) -> Unit =
+        { adapter -> viewClicked(adapter) }
 
     private fun viewClicked(adapter: BaseBindingAdapter<T, B>) {
 
@@ -242,7 +245,8 @@ abstract class BaseBindingAdapter<T, B : ViewDataBinding>(
             } else if (layoutManager is StaggeredGridLayoutManager) {
                 val staggeredGridLayoutManager = layoutManager as StaggeredGridLayoutManager
                 if (layoutManager.getItemCount() > 0) {
-                    lastVisiblePosition = staggeredGridLayoutManager.findLastVisibleItemPositions(null)[0]
+                    lastVisiblePosition =
+                        staggeredGridLayoutManager.findLastVisibleItemPositions(null)[0]
                 } else {
                     lastVisiblePosition = 0
                 }

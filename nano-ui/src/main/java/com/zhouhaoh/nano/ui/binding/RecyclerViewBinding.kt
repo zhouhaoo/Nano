@@ -1,4 +1,4 @@
-package com.zhouhaoa.nano.ui.binding
+package com.zhouhaoh.nano.ui.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.delicloud.common.component.view.stateView
+package com.zhouhaoh.nano.ui.component.stateView
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.*
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.delicloud.common.component.view.stateView.State.*
+import com.zhouhaoh.nano.ui.component.stateView.State.*
 import com.zhouhaoh.nano.ui.R
 
 

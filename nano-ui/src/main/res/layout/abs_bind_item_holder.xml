@@ -5,11 +5,11 @@
 
         <variable
             name="item"
-            type="com.zhouhaoa.nano.ui.binding.Void" />
+            type="com.zhouhaoh.nano.ui.binding.Void" />
 
         <variable
             name="actionHandler"
-            type="com.zhouhaoa.nano.ui.binding.ItemActionHandler" />
+            type="com.zhouhaoh.nano.ui.binding.ItemActionHandler" />
 
         <variable
             name="viewModel"

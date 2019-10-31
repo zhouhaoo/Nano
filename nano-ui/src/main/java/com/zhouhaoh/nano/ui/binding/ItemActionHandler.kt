@@ -1,4 +1,4 @@
-package com.zhouhaoa.nano.ui.binding
+package com.zhouhaoh.nano.ui.binding
 
 /**
  * Created by wang on 2016/12/20

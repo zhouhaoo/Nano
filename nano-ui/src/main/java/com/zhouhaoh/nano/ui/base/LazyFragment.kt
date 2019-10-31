@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.delicloud.common.component.view.stateView.StateLayout
 import com.zhouhaoh.nano.state.LoadingState
+import com.zhouhaoh.nano.ui.component.stateView.StateLayout
 import com.zhouhaoh.nano.ui.strategy.CommonUIStrategy
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -32,7 +32,11 @@ abstract class LazyFragment : Fragment(), IView {
         prepareLoad()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         if (fragmentView == null) {
             fragmentView = inflater.inflate(layoutId(), container, false)
             stateLayout = StateLayout(context!!)
@@ -69,7 +73,6 @@ abstract class LazyFragment : Fragment(), IView {
     abstract fun layoutId(): Int
 
     abstract fun onLazyLoad()
-
 
 
     override fun showLoading(loadingState: LoadingState) {
