@@ -29,6 +29,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':nano')
+    implementation project(path: ':nano-ui')
+    implementation project(path: ':nano-tools')
+    implementation project(path: ':nano-state')
     def config = rootProject.ext
     implementation config.ui.toast
     implementation(config.net.logInterceptor) {

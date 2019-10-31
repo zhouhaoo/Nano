@@ -1,10 +1,10 @@
 package com.zhouhaoh.nano.sample.mvvm
 
-import com.zhouhaoh.nano.core.BaseActivity
+import com.zhouhaoh.nano.ui.base.BaseActivity
 import com.zhouhaoh.nano.sample.R
 import com.zhouhaoh.nano.sample.base.applyState
 import com.zhouhaoh.nano.sample.databinding.ActivityMainBinding
-import com.zhouhaoh.nano.ui.bindingView
+import com.zhouhaoh.nano.ui.ext.bindingView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {

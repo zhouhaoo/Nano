@@ -8,14 +8,15 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.hjq.toast.ToastUtils
-import com.zhouhaoh.nano.core.LoadingState
 import com.zhouhaoh.nano.sample.R
-import com.zhouhaoh.nano.ui.CommonUIStrategy
+import com.zhouhaoh.nano.state.LoadingState
+import com.zhouhaoh.nano.ui.ext.stop
+import com.zhouhaoh.nano.ui.strategy.CommonUIStrategy
 import kotlinx.android.synthetic.main.dialog_loading.view.*
 import timber.log.Timber
 
 /**
- * ### app基本通用Ui策略
+ * ### app基本通用Ui策略 示例
  * > Created by zhouhaoh  on 2019/10/20.
  */
 class AppUIStrategy(windowContext: Context) : CommonUIStrategy(windowContext) {

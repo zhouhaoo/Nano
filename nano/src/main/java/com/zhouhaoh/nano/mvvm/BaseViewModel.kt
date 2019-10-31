@@ -3,11 +3,11 @@ package com.zhouhaoh.nano.mvvm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zhouhaoh.nano.core.CompleteState
-import com.zhouhaoh.nano.core.ErrorState
-import com.zhouhaoh.nano.core.LoadingState
-import com.zhouhaoh.nano.core.StateDispatcher
 import com.zhouhaoh.nano.data.ApiException
+import com.zhouhaoh.nano.state.CompleteState
+import com.zhouhaoh.nano.state.ErrorState
+import com.zhouhaoh.nano.state.LoadingState
+import com.zhouhaoh.nano.state.StateDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -51,7 +51,7 @@ open class BaseViewModel : ViewModel() {
                         state.value = ErrorState(t)
                     }
                 } finally {
-                    state.postValue(CompleteState())
+                    state.postValue(CompleteState)
                     finallyBlock()
                 }
             }

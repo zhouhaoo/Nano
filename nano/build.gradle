@@ -24,21 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':nano-state')
+
     def config = rootProject.ext
-    api config.androidx.constraintlayout
-    api config.androidx.constraintlayout
-    api config.androidx.cardview
-    api config.androidx.fragmentKtx
-    api config.ui.dialogsCore
-    api config.ui.design
 
     api config.deps.kotlin
     api config.deps.coroutinesCore
@@ -47,7 +40,6 @@ dependencies {
     api config.androidx.appcompat
     api config.androidx.coreKtx
 
-    api config.jetpack.lifecycle_extensions
     api config.jetpack.viewmodel_ktx
 
     api config.koin.viewmodel
@@ -58,7 +50,6 @@ dependencies {
     api config.net.retrofit
     api config.net.gsonConverter
 
-    api 'androidx.palette:palette:1.0.0'
 
 
     testImplementation 'junit:junit:4.12'

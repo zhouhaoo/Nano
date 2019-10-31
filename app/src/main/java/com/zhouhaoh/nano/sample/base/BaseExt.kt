@@ -1,14 +1,13 @@
 package com.zhouhaoh.nano.sample.base
 
-import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.zhouhaoh.nano.core.*
 import com.zhouhaoh.nano.data.ApiException
 import com.zhouhaoh.nano.mvvm.BaseViewModel
 import com.zhouhaoh.nano.sample.data.BaseResponse
-import com.zhouhaoh.nano.ui.loading.SlackLoadingView
+import com.zhouhaoh.nano.ui.base.BaseActivity
+import com.zhouhaoh.nano.ui.base.IView
 import com.zhouhaoh.nano.utils.parseException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,41 +32,20 @@ fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
     if (this is IView) {
         viewModel.state.observe(this, Observer {
             when (it) {
-                is LoadingState -> {
+                is com.zhouhaoh.nano.state.LoadingState -> {
                     showLoading(loadingState = it)
                 }
-                is ErrorState -> {
+                is com.zhouhaoh.nano.state.ErrorState -> {
                     if (it.throwable is ApiException) {
                         toast(message = it.throwable.message)
                     } else {
                         toast(resId = parseException(it.throwable))
                     }
                 }
-                is CompleteState -> this.dismissLoading()
-                is HintState -> toast(resId = it.messageInfo)
+                is com.zhouhaoh.nano.state.CompleteState -> this.dismissLoading()
+                is com.zhouhaoh.nano.state.HintState -> toast(resId = it.messageInfo)
             }
         })
-    }
-}
-
-
-/**
- * 停止加载进度旋转
- */
-fun SlackLoadingView.stop() {
-    this.apply {
-        reset()
-        visibility = View.GONE
-    }
-}
-
-/**
- * 开始加载进度旋转
- */
-fun SlackLoadingView.reStart() {
-    this.apply {
-        visibility = View.VISIBLE
-        start()
     }
 }
 

@@ -1,2 +1,2 @@
-include ':app', ':nano'
+include ':app', ':nano', ':nano-ui', ':nano-tools', ':nano-state'
 rootProject.name='Nano'

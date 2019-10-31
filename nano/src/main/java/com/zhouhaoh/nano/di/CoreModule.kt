@@ -1,11 +1,8 @@
 package com.zhouhaoh.nano.di
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.zhouhaoh.nano.module.NanoCore
-import com.zhouhaoh.nano.ui.CommonUIStrategy
-import com.zhouhaoh.nano.ui.DefaultUIStrategy
+import com.zhouhaoh.nano.core.NanoCore
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -18,7 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 val nanoModule = module {
     single { createGson() }
-    factory<CommonUIStrategy> { (context: Context) -> DefaultUIStrategy(context) }
     single(createdAtStart = true) { createOkHttpClient(get()) }
 }
 

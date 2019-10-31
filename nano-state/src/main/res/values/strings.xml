@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">nano-state</string>
+    <string name="nano_loading">请稍后…</string>
+</resources>
