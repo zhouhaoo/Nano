@@ -4,5 +4,4 @@ data class BaseResponse<T>(
     val error: Boolean,
     val results: T?,
     val message: String?
-) {
-}
+)

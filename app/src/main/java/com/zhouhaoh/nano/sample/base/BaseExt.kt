@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.zhouhaoh.nano.data.ApiException
 import com.zhouhaoh.nano.mvvm.BaseViewModel
 import com.zhouhaoh.nano.sample.data.BaseResponse
+import com.zhouhaoh.nano.sample.data.BaseResponseV2
 import com.zhouhaoh.nano.state.CompleteState
 import com.zhouhaoh.nano.state.HintState
 import com.zhouhaoh.nano.state.LoadingState
@@ -28,6 +29,19 @@ suspend inline fun <reified T> withIOContext(
     } else {
         Timber.e("response.throw ApiException(response.message)")
         throw  ApiException(response.message)
+    }
+}
+
+suspend inline fun <T : BaseResponseV2> withIOV2Context(
+    crossinline block: suspend CoroutineScope.() -> T
+): T = withContext(Dispatchers.IO) {
+    val response = block()
+    if (response.code == 200) {
+        Timber.e("response.results")
+        response
+    } else {
+        Timber.e("response.throw ApiException(response.message)")
+        throw  ApiException(response.message, response.code)
     }
 }
 
