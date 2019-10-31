@@ -6,6 +6,9 @@ import androidx.lifecycle.Observer
 import com.zhouhaoh.nano.data.ApiException
 import com.zhouhaoh.nano.mvvm.BaseViewModel
 import com.zhouhaoh.nano.sample.data.BaseResponse
+import com.zhouhaoh.nano.state.CompleteState
+import com.zhouhaoh.nano.state.HintState
+import com.zhouhaoh.nano.state.LoadingState
 import com.zhouhaoh.nano.ui.base.BaseActivity
 import com.zhouhaoh.nano.ui.base.IView
 import com.zhouhaoh.nano.utils.parseException
@@ -23,7 +26,7 @@ suspend inline fun <reified T> withIOContext(
         Timber.e("response.results")
         response.results ?: T::class.java.newInstance()
     } else {
-        Timber.e("response.        throw  ApiException(response.message)")
+        Timber.e("response.throw ApiException(response.message)")
         throw  ApiException(response.message)
     }
 }
@@ -32,7 +35,7 @@ fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
     if (this is IView) {
         viewModel.state.observe(this, Observer {
             when (it) {
-                is com.zhouhaoh.nano.state.LoadingState -> {
+                is LoadingState -> {
                     showLoading(loadingState = it)
                 }
                 is com.zhouhaoh.nano.state.ErrorState -> {
@@ -42,8 +45,8 @@ fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
                         toast(resId = parseException(it.throwable))
                     }
                 }
-                is com.zhouhaoh.nano.state.CompleteState -> this.dismissLoading()
-                is com.zhouhaoh.nano.state.HintState -> toast(resId = it.messageInfo)
+                is CompleteState -> this.dismissLoading()
+                is HintState -> toast(resId = it.messageInfo)
             }
         })
     }

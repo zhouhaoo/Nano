@@ -1,4 +1,4 @@
-package com.zhouhaoh.nano.ext
+package com.zhouhaoh.nano.core
 
 /**
  * 使用[编译器插件](https://hltj.gitbooks.io/kotlin-reference-chinese/content/txt/compiler-plugins.html)
