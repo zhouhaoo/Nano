@@ -36,12 +36,10 @@ suspend inline fun <T : BaseResponseV2> withIOV2Context(
     crossinline block: suspend CoroutineScope.() -> T
 ): T = withContext(Dispatchers.IO) {
     val response = block()
-    if (response.code == 200) {
-        Timber.e("response.results")
+    if (response.errMsg.isNullOrEmpty()) {
         response
     } else {
-        Timber.e("response.throw ApiException(response.message)")
-        throw  ApiException(response.message, response.code)
+        throw  ApiException(response.errMsg)
     }
 }
 
