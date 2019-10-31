@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">nano-ui</string>
+
+    <string name="abs_load_more">加载更多</string>
+    <string name="abs_load_loading">加载中…</string>
+    <string name="abs_load_fail">加载失败,点击重试</string>
+    <string name="abs_load_completed">暂无更多</string>
+
+    <string name="abs_reload">重新加载</string>
+    <string name="abs_not_more">暂无数据</string>
 </resources>
