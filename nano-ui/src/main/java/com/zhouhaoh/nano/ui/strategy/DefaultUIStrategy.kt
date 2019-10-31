@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.nano_dialog_loading.view.*
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.KoinComponent
 
-class DefaultUIStrategy(windowContext: Context) : CommonUIStrategy(windowContext), KoinComponent {
+open class DefaultUIStrategy(windowContext: Context) : CommonUIStrategy(windowContext),
+    KoinComponent {
 
     /**
      * dialog
