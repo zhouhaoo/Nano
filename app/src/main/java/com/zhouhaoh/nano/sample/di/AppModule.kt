@@ -12,8 +12,8 @@ import com.zhouhaoh.nano.core.retrofit
 import com.zhouhaoh.nano.di.createWebService
 import com.zhouhaoh.nano.sample.BuildConfig
 import com.zhouhaoh.nano.sample.api.ApiService
+import com.zhouhaoh.nano.sample.base.AppUIStrategy
 import com.zhouhaoh.nano.ui.strategy.CommonUIStrategy
-import com.zhouhaoh.nano.ui.strategy.DefaultUIStrategy
 import okhttp3.internal.platform.Platform
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
@@ -22,7 +22,7 @@ import timber.log.Timber
 val appModule = module {
     single { createNanoCore(androidApplication()) }
     single { createWebService<ApiService>(get(), get(), get()) }
-    factory<CommonUIStrategy> { (context: Context) -> DefaultUIStrategy(context) }
+    factory<CommonUIStrategy> { (context: Context) -> AppUIStrategy(context) }
 }
 
 /**
