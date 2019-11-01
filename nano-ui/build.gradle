@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
     buildToolsVersion = androidBuildToolsVersion
@@ -10,7 +11,7 @@ android {
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName rootProject.ext.nanoVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -29,10 +30,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':nano-state')
+//    implementation project(path: ':nano-state')
 
     def config = rootProject.ext
     implementation config.deps.kotlin
+    implementation config.nano.state
 
     api config.androidx.appcompat
     api config.androidx.coreKtx
@@ -50,4 +52,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+publish {
+    userOrg = 'zhouhaoo'
+    repoName = 'android'
+    groupId = 'com.zhouhaoh'
+    artifactId = 'nano-ui'
+    publishVersion = rootProject.ext.nanoVersion
+    desc = 'nano-ui'
+    website = 'https://github.com/zhouhaoo/Nano'
 }

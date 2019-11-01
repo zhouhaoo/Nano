@@ -31,8 +31,8 @@ dependencies {
     implementation project(path: ':nano')
     implementation project(path: ':nano-ui')
     implementation project(path: ':nano-tools')
-    implementation project(path: ':nano-state')
     def config = rootProject.ext
+    implementation config.nano.state
     implementation config.ui.toast
     implementation(config.net.logInterceptor) {
         exclude group: 'org.json', module: 'json'

@@ -4,15 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.bintray-release'
 
-def nanoVersion = "0.1.1"
 android {
-    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    compileSdkVersion androidCompileSdkVersion
     buildToolsVersion = androidBuildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
         versionCode 2
-        versionName nanoVersion
+        versionName rootProject.ext.nanoVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -29,10 +28,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':nano-state')
+//    implementation project(path: ':nano-state')
 
     def config = rootProject.ext
-
+    implementation config.nano.state
     api config.deps.kotlin
     api config.deps.coroutinesCore
     api config.deps.coroutinesAndroid
@@ -61,7 +60,7 @@ publish {
     repoName = 'android'
     groupId = 'com.zhouhaoh'
     artifactId = 'nano'
-    publishVersion = nanoVersion
+    publishVersion = rootProject.ext.nanoVersion
     desc = 'nano-core'
     website = 'https://github.com/zhouhaoo/Nano'
 }
