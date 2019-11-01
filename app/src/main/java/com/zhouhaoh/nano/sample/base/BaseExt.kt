@@ -43,7 +43,7 @@ suspend inline fun <T : BaseResponseV2> withIOV2Context(
     }
 }
 
-fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
+private fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
     if (this is IView) {
         viewModel.state.observe(this, Observer {
             when (it) {
@@ -64,6 +64,12 @@ fun LifecycleOwner.applyState(viewModel: BaseViewModel) {
     }
 }
 
+/**
+ * 支持多个
+ */
+fun LifecycleOwner.applyState(vararg viewModels: BaseViewModel) {
+    viewModels.forEach(::applyState)
+}
 
 /**
  * 设置toolbar返回键可用

@@ -3,7 +3,6 @@ package com.zhouhaoh.nano.mvvm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zhouhaoh.nano.data.ApiException
 import com.zhouhaoh.nano.state.CompleteState
 import com.zhouhaoh.nano.state.ErrorState
 import com.zhouhaoh.nano.state.LoadingState
@@ -45,11 +44,7 @@ open class BaseViewModel : ViewModel() {
                     tryBlock()
                 } catch (t: Throwable) {
                     Timber.e(t)
-                    if (controlException && t is ApiException) {
-                        catchBlock(t)
-                    } else {
-                        state.value = ErrorState(t)
-                    }
+                    if (controlException) catchBlock(t) else state.value = ErrorState(t)
                 } finally {
                     state.postValue(CompleteState)
                     finallyBlock()
