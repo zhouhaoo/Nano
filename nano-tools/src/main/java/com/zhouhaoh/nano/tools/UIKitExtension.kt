@@ -1,4 +1,4 @@
-package com.delicloud.common.utils
+package com.zhouhaoh.nano.tools
 
 import android.content.Context
 import android.util.TypedValue

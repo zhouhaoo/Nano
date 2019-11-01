@@ -1,7 +1,6 @@
-package com.delicloud.common.utils
+package com.zhouhaoh.nano.tools
 
 import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import java.util.*
 
 object Md5Util {

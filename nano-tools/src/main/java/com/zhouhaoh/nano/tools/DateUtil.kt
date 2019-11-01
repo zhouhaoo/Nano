@@ -1,7 +1,5 @@
-package com.delicloud.common.utils
+package com.zhouhaoh.nano.tools
 
-import com.zhouhaoh.nano.tools.otherwise
-import com.zhouhaoh.nano.tools.yes
 import java.util.*
 
 fun getYear(): String {
