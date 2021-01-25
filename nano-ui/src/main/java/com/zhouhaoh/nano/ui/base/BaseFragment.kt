@@ -1,9 +1,6 @@
 package com.zhouhaoh.nano.ui.base
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.zhouhaoh.nano.state.LoadingState
 import com.zhouhaoh.nano.ui.strategy.CommonUIStrategy
@@ -15,19 +12,9 @@ import org.koin.core.parameter.parametersOf
  * > Created by zhouhaoh  on 19/10/16.
  */
 abstract class BaseFragment : Fragment(), IView {
-    /**
-     * 布局
-     */
-    abstract val layoutResID: Int
+
     private val uiStrategy by inject<CommonUIStrategy> {
         parametersOf(this.activity)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(layoutResID, container, false)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

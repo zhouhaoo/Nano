@@ -7,7 +7,7 @@ ext {
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
     //Nano
-    nanoVersion = '0.1.1'
+    nanoVersion = '0.1.2'
     //Libraries
     appcompat = '1.1.0'
     constraintlayout = '1.1.3'

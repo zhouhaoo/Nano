@@ -13,17 +13,13 @@ import org.koin.core.parameter.parametersOf
  * > Created by zhouhaoh  on 19/10/16.
  */
 abstract class BaseActivity : AppCompatActivity(), IView {
-    /**
-     * 布局id
-     */
-     abstract val layoutResID: Int
+
     private val uiStrategy by inject<CommonUIStrategy> {
         parametersOf(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResID)
         lifecycle.addObserver(uiStrategy)
         initView(savedInstanceState)
         initData()
