@@ -11,7 +11,11 @@ import org.koin.core.parameter.parametersOf
  *BaseFragment
  * > Created by zhouhaoh  on 19/10/16.
  */
-abstract class BaseFragment : Fragment(), IView {
+abstract class BaseFragment : Fragment, IView {
+
+    constructor() : super()
+
+    constructor(contentLayoutId: Int) : super(contentLayoutId)
 
     private val uiStrategy by inject<CommonUIStrategy> {
         parametersOf(this.activity)
